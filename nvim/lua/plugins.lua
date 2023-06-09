@@ -59,6 +59,13 @@ require("lazy").setup({
         end
     },
 
+    {
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+            require("mason-lspconfig").setup{}
+        end
+    },
+
     "mfussenegger/nvim-dap",
     "nvim-lua/plenary.nvim",
     "jose-elias-alvarez/null-ls.nvim",

@@ -1,6 +1,7 @@
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
+  print("Loading Lazy.nvim...")
   vim.fn.system({
     "git",
     "clone",
@@ -9,6 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
     "--branch=stable", -- latest stable release
     lazypath,
   })
+  print("Done.")
 end
 vim.opt.rtp:prepend(lazypath)
 
