@@ -19,6 +19,7 @@ opt.cursorline = true -- highlight current cursorline
 opt.signcolumn = "yes" -- gutter always enabled
 opt.termguicolors = true
 opt.list = true
+opt.wrap = false -- disable linewrap
 
 vim.fn.sign_define(
     "DiagnosticSignError",
