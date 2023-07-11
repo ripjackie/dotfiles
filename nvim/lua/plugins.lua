@@ -38,6 +38,16 @@ require("lazy").setup({
         end
     },
 
+    -- pydocstring
+    {
+        "heavenshell/vim-pydocstring",
+        build = "make install",
+        config = function()
+            vim.g.pydocstring_formatter = "google"
+        end,
+        ft = "python"
+    },
+
 	-- nvim-treesitter
 	{
 		'nvim-treesitter/nvim-treesitter',
@@ -49,22 +59,6 @@ require("lazy").setup({
             }
         end
 	},
-
-    -- mason
-    {
-        "williamboman/mason.nvim",
-        build = ":MasonUpdate",
-        config = function()
-            require("mason").setup{}
-        end
-    },
-
-    {
-        "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason-lspconfig").setup{}
-        end
-    },
 
     "mfussenegger/nvim-dap",
     "nvim-lua/plenary.nvim",
@@ -81,7 +75,6 @@ require("lazy").setup({
             {"nvim-treesitter/nvim-treesitter"}
         }
     },
-
 
     -- tokyo night theme
     {

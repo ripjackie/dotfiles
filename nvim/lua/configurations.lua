@@ -21,19 +21,19 @@ opt.termguicolors = true
 opt.list = true
 opt.wrap = false -- disable linewrap
 
-vim.fn.sign_define(
-    "DiagnosticSignError",
-    {text = "", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError"}
-)
-vim.fn.sign_define(
-    "DiagnosticSignWarn",
-    {text = "", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn"}
-)
-vim.fn.sign_define(
-    "DiagnosticSignHint",
-    {text = "", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint"}
-)
-vim.fn.sign_define(
-    "DiagnosticSignInfo",
-    {text = "", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo"}
-)
+-- vim.fn.sign_define(
+--     "DiagnosticSignError",
+--     {text = "", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError"}
+-- )
+-- vim.fn.sign_define(
+--     "DiagnosticSignWarn",
+--     {text = "", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn"}
+-- )
+-- vim.fn.sign_define(
+--     "DiagnosticSignHint",
+--     {text = "", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint"}
+-- )
+-- vim.fn.sign_define(
+--     "DiagnosticSignInfo",
+--     {text = "", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo"}
+-- )
