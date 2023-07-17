@@ -9,7 +9,7 @@
   "nest.nvim": { "branch": "master", "commit": "e5da827a3adfb383b56587bdf4eb62fae4154364" },
   "nvim-autopairs": { "branch": "master", "commit": "e8f7dd7a72de3e7b6626c050a802000e69d53ff0" },
   "nvim-navic": { "branch": "master", "commit": "6e8850a524307814decc1b195a2c8a51482a9886" },
-  "nvim-treesitter": { "branch": "master", "commit": "3af1220e18034eb2ce7d1c8e77055bc3bf3c1c36" },
+  "nvim-treesitter": { "branch": "master", "commit": "f2efc5f35743b8383a1b50f727faae94658506d5" },
   "nvim-web-devicons": { "branch": "master", "commit": "9ab9b0b894b2388a9dbcdee5f00ce72e25d85bf9" },
   "tokyonight.nvim": { "branch": "main", "commit": "284667adfff02b9a0adc65968c553c6096b543b6" }
 }
