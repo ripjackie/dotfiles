@@ -23,14 +23,10 @@ opt.signcolumn = "yes" -- gutter always enabled
 opt.termguicolors = true
 opt.list = true
 opt.wrap = false -- disable linewrap
--- opt.background = "dark"
--- vim.g.everforest_backgroun = "hard"
--- vim.g.everforest_better_performance = 1
-vim.g.neon_style = "dark"
-vim.g.neon_italic_comment = true
-vim.g.neon_italic_boolean = true
-vim.g.neon_italic_function = true
-cmd.colorscheme "neon"
+
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldenable = false
 
 local nest = require("nest")
 nest.applyKeymaps {

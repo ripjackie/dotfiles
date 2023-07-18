@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 if not vim.g.vscode then
     require("plugins")
     require("configs")
-    require("lspconfigs")
 end
 
 vim.cmd[[autocmd VimEnter * :COQnow -s]]
