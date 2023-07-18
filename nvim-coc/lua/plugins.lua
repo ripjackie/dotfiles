@@ -1,10 +1,10 @@
 require("lazy").setup{
-	{"neoclide/coc.nvim",
+	{ "neoclide/coc.nvim",
 	 branch = "release"
     },
+
 	-- nvim-treesitter
-	{
-		'nvim-treesitter/nvim-treesitter',
+	{ 'nvim-treesitter/nvim-treesitter',
         build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup{
@@ -13,16 +13,10 @@ require("lazy").setup{
             }
         end
 	},
-    -- tokyo night theme
-    -- {
-    --     "folke/tokyonight.nvim",
-    --     lazy = false,
-    --     priority = 1000,
-    --     opts = {}
-    -- },
-    {"sainnhe/everforest"},
-    {
-	    "nvim-lualine/lualine.nvim",
+
+    { "sainnhe/everforest" },
+
+    { "nvim-lualine/lualine.nvim",
 	    event = "VeryLazy",
 	    requires = {
 		    "nvim-tree/nvim-web-devicons"
@@ -33,8 +27,8 @@ require("lazy").setup{
             }
         end
     },
-    {
-        "lukas-reineke/indent-blankline.nvim",
+
+    { "lukas-reineke/indent-blankline.nvim",
         config = function()
             require("indent_blankline").setup{
                 space_char_blankline = " ",
@@ -45,9 +39,9 @@ require("lazy").setup{
             }
         end
     },
+
     -- barbecue
-    {
-	    "utilyre/barbecue.nvim",
+    { "utilyre/barbecue.nvim",
 	    event = "VeryLazy",
 	    dependencies = {
 		    "SmiteshP/nvim-navic",
@@ -60,18 +54,23 @@ require("lazy").setup{
             }
         end
     },
+
     -- git signs
-    {
-        "lewis6991/gitsigns.nvim",
+    { "lewis6991/gitsigns.nvim",
         config = function()
             require("gitsigns").setup{}
         end
     },
-	{
-		'windwp/nvim-autopairs',
+
+	{ 'windwp/nvim-autopairs',
 		config = function()
             require("nvim-autopairs").setup{}
         end
 	},
-    {"LionC/nest.nvim"}
+
+    { "LionC/nest.nvim" },
+    { "psf/black",
+        branch = "main"
+    },
+    { "fisadev/vim-isort"}
  }

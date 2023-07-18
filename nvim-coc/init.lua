@@ -1,6 +1,25 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
 if not vim.g.vscode then
-    require("lazy-bootstrap")
     require("plugins")
     require("configs")
 end
 
+vim.cmd[[
+    aug python
+        au!
+        autocmd BufWritePre *.py Black
+        autocmd BufWritePre *.py Isort
+    aug END
+]]
