@@ -1,0 +1,25 @@
+{
+    "workspace.library": [
+        "/home/ripjack/.config/nvim",
+        "/home/ripjack/.local/share/nvim/site",
+        "/home/ripjack/.local/share/nvim/lazy/lazy.nvim",
+        "/home/ripjack/.local/share/nvim/lazy/nest.nvim",
+        "/home/ripjack/.local/share/nvim/lazy/vim-isort",
+        "/home/ripjack/.local/share/nvim/lazy/black",
+        "/home/ripjack/.local/share/nvim/lazy/nvim-lspconfig",
+        "/home/ripjack/.local/share/nvim/lazy/gitsigns.nvim",
+        "/home/ripjack/.local/share/nvim/lazy/chadtree",
+        "/home/ripjack/.local/share/nvim/lazy/coq_nvim",
+        "/home/ripjack/.local/share/nvim/lazy/coq.thirdparty",
+        "/home/ripjack/.local/share/nvim/lazy/neon",
+        "/home/ripjack/.local/share/nvim/lazy/nvim-treesitter",
+        "/home/ripjack/.local/share/nvim/lazy/indent-blankline.nvim",
+        "/home/ripjack/.local/share/nvim/lazy/coq.artifacts",
+        "/usr/share/nvim/runtime",
+        "/usr/share/nvim/runtime/pack/dist/opt/matchit",
+        "/usr/lib/nvim",
+        "/home/ripjack/.local/state/nvim/lazy/readme",
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
+    ]
+}

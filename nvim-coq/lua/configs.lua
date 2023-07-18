@@ -1,6 +1,7 @@
 local opt = vim.opt
 local cmd = vim.cmd
 
+vim.g.mapleader = " "
 opt.termguicolors = true
 opt.tabstop = 4 -- number of columns per tab
 opt.softtabstop = 4 -- see multiple spaces as tabstops so <BS> does the right thing
@@ -28,64 +29,17 @@ opt.wrap = false -- disable linewrap
 vim.g.neon_style = "dark"
 vim.g.neon_italic_comment = true
 vim.g.neon_italic_boolean = true
-vim.g.neon_bold = true
+vim.g.neon_italic_function = true
 cmd.colorscheme "neon"
-
- -- opts reccomended by coc
-opt.backup = false
-opt.writebackup = false
-opt.updatetime = 300
-
-
-local function coc_select()
-    if vim.fn["coc#pum#visible"]() == 1 then
-        return vim.fn["coc#pum#confirm"]()
-    else
-        return "<cr>"
-    end
-end
-
-local function coc_next()
-    if vim.fn["coc#pum#visible"]() == 1 then
-        return vim.fn["coc#pum#next"](1)
-    else
-        return "<tab>"
-    end
-end
-
-local function coc_prev()
-    if vim.fn["coc#pum#visible"]() == 1 then
-        return vim.fn["coc#pum#prev"](1)
-    else
-        return "<s-tab>"
-    end
-end
-
-local function coc_deselect()
-    if vim.fn["coc#pum#visible"]() == 1 then
-        return vim.fn["coc#pum#cancel"]()
-    else
-        return "<bs>"
-    end
-end
 
 local nest = require("nest")
 nest.applyKeymaps {
-    { 
-        mode = "i",
-        { "jk", "<Esc>" },
-        { 
-            options = { expr = true },
-            { "<cr>", coc_select },
-            { "<tab>", coc_next },
-            { "<s-tab>", coc_prev },
-            { "<bs>", coc_deselect },
-        }
-    },
     {
         mode = "n",
-        { "<c-r>", "<Plug>(coc-rename)" },
-        { "<c-c>", "<cmd>CHADopen<cr>" },
-    },
+        {
+            "<leader>",
+            { "c", "<cmd>CHADopen<cr>" },
+            { "<s-s>", "<cmd>CHADopen ~/.config/nvim<cr>" },
+        },
+    }
 }
-

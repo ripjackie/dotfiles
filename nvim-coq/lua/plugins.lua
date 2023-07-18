@@ -1,29 +1,42 @@
+
 require("lazy").setup {
-	{ 
-        "neoclide/coc.nvim",
-        branch = "release"
+    -- nvim-lsp
+    { "neovim/nvim-lspconfig" },
+    -- coq-nvim
+    {
+        "ms-jpq/coq_nvim",
+        branch = "coq"
     },
 
+    {
+        "ms-jpq/coq.artifacts",
+        branch = "artifacts"
+    },
+
+    {
+        "ms-jpq/coq.thirdparty",
+        branch = "3p"
+    },
 	-- nvim-treesitter
-	{ 
+	{
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         opts = {
             highlight = { enable  = true },
-            indent = { enable =true },
+            indent = { enable = true },
         }
 	},
 
-    { 
+    {
         "nvim-lualine/lualine.nvim",
 	    event = "VeryLazy",
-	    requires = {
+	    dependencies = {
 		    "nvim-tree/nvim-web-devicons"
 	    },
         opts = {  theme = "neon" }
     },
 
-    { 
+    {
         "lukas-reineke/indent-blankline.nvim",
         opts = {
             space_char_blankline = " ",
@@ -67,8 +80,6 @@ require("lazy").setup {
 
     { "fisadev/vim-isort" },
 
-    -- { "sainnhe/everforest" },
-    
     { "rafamadriz/neon" },
 
     {
