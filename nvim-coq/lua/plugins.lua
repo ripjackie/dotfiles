@@ -1,7 +1,6 @@
 require("lazy").setup {
     -- nvim-lsp
-    {
-        "neovim/nvim-lspconfig",
+    { "neovim/nvim-lspconfig",
         requires = {"ms-jpq/coq_nvim"},
         config = function()
             local lsp = require("lspconfig")
@@ -30,8 +29,7 @@ require("lazy").setup {
 
     { "ms-jpq/coq.thirdparty", branch = "3p" },
 	-- nvim-treesitter
-	{
-        "nvim-treesitter/nvim-treesitter",
+	{ "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup {
@@ -52,17 +50,15 @@ require("lazy").setup {
         end
 	},
 
-    {
-        "nvim-lualine/lualine.nvim",
+    { "nvim-lualine/lualine.nvim",
 	    event = "VeryLazy",
 	    dependencies = {
 		    "nvim-tree/nvim-web-devicons"
 	    },
-        opts = {  theme = "neon" }
+        opts = {  theme = "auto" }
     },
 
-    {
-        "lukas-reineke/indent-blankline.nvim",
+    { "lukas-reineke/indent-blankline.nvim",
         opts = {
             space_char_blankline = " ",
             show_current_context = true,
@@ -73,8 +69,7 @@ require("lazy").setup {
     },
 
     -- barbecue
-    {
-        "utilyre/barbecue.nvim",
+    { "utilyre/barbecue.nvim",
 	    event = "VeryLazy",
 	    dependencies = {
 		    "SmiteshP/nvim-navic",
@@ -86,17 +81,12 @@ require("lazy").setup {
     -- git signs
     { "lewis6991/gitsigns.nvim", opts = {} },
 
-	{
-        "windwp/nvim-autopairs",
+	{ "windwp/nvim-autopairs",
         event = "InsertEnter",
         opts = {}
 	},
 
     { "LionC/nest.nvim" },
-
-    { "psf/black", branch = "main" },
-
-    { "fisadev/vim-isort" },
 
     {
         "sainnhe/edge",
@@ -107,13 +97,14 @@ require("lazy").setup {
         end
     },
 
-    {
-        "ms-jpq/chadtree",
-        branch = "chad",
-        build = "python3 -m chadtree deps"
+    { "stevearc/oil.nvim",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons"
+        },
+        opts = {}
     },
-    {
-        "wfxr/minimap.vim",
+
+    { "wfxr/minimap.vim",
         lazy = false,
         init = function()
             vim.g.minimap_auto_start = 1
@@ -121,5 +112,5 @@ require("lazy").setup {
             vim.g.minimap_highlight_range = true
             vim.g.minimap_highlight_search = true
         end
-    }
+    },
  }

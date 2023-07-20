@@ -1,5 +1,4 @@
 local opt = vim.opt
-local cmd = vim.cmd
 
 vim.g.mapleader = " "
 opt.termguicolors = true
@@ -28,14 +27,10 @@ opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = false
 
-local nest = require("nest")
-nest.applyKeymaps {
-    {
-        mode = "n",
-        {
-            "<leader>",
-            { "c", "<cmd>CHADopen<cr>" },
-            { "<s-s>", "<cmd>CHADopen ~/.config/nvim<cr>" },
-        },
-    }
+require("nest").applyKeymaps {
+    { "<leader>", {
+        { "c", "<cmd>Oil .<cr>" },
+        { "s", vim.diagnostic.open_float },
+        { "e", "<cmd>Oil --float ~/.config/nvim<cr>"},
+    }}
 }

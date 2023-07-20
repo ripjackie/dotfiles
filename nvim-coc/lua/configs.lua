@@ -64,10 +64,10 @@ end
 
 local nest = require("nest")
 nest.applyKeymaps {
-    { 
+    {
         mode = "i",
         { "jk", "<Esc>" },
-        { 
+        {
             options = { expr = true },
             { "<cr>", coc_select },
             { "<tab>", coc_next },

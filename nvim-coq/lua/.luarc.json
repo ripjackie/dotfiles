@@ -21,5 +21,6 @@
         "/home/ripjack/.local/state/nvim/lazy/readme",
         "${3rd}/luassert/library",
         "${3rd}/luv/library"
-    ]
+    ],
+    "workspace.checkThirdParty": false
 }
