@@ -1,6 +1,7 @@
 local opt = vim.opt
 local cmd = vim.cmd
 
+vim.g.mapleader = " "
 opt.termguicolors = true
 opt.tabstop = 4 -- number of columns per tab
 opt.softtabstop = 4 -- see multiple spaces as tabstops so <BS> does the right thing
@@ -22,14 +23,6 @@ opt.signcolumn = "yes" -- gutter always enabled
 opt.termguicolors = true
 opt.list = true
 opt.wrap = false -- disable linewrap
--- opt.background = "dark"
--- vim.g.everforest_backgroun = "hard"
--- vim.g.everforest_better_performance = 1
-vim.g.neon_style = "dark"
-vim.g.neon_italic_comment = true
-vim.g.neon_italic_boolean = true
-vim.g.neon_bold = true
-cmd.colorscheme "neon"
 
  -- opts reccomended by coc
 opt.backup = false
@@ -85,7 +78,9 @@ nest.applyKeymaps {
     {
         mode = "n",
         { "<c-r>", "<Plug>(coc-rename)" },
-        { "<c-c>", "<cmd>CHADopen<cr>" },
+        { "<leader>", {
+            { "e", "<cmd>Oil --float ~/.config/nvim<cr>" }
+        }}
     },
 }
 

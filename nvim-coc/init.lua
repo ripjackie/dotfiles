@@ -16,10 +16,3 @@ if not vim.g.vscode then
     require("configs")
 end
 
-vim.cmd[[
-    aug python
-        au!
-        autocmd BufWritePre *.py Black
-        autocmd BufWritePre *.py Isort
-    aug END
-]]
