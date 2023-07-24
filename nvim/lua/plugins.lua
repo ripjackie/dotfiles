@@ -1,139 +1,126 @@
---lazy.nvim plugins
-require("lazy").setup({
-	-- nvim-cmp
+require("lazy").setup {
+    -- nvim-lsp
+    { "neovim/nvim-lspconfig" },
+
+    -- coq-nvim
     {
-        'neovim/nvim-lspconfig',
-        dependencies = {
-            "glepnir/lspsaga.nvim"
-        }
-    },
-	'hrsh7th/cmp-nvim-lsp',
-	'hrsh7th/cmp-buffer',
-	'hrsh7th/cmp-path',
-	'hrsh7th/cmp-cmdline',
-	'hrsh7th/nvim-cmp',
-
-	-- luasnip
-	'L3MON4D3/LuaSnip',
-	'saadparwaiz1/cmp_luasnip',
-
-	-- nvim-autopairs
-	{
-		'windwp/nvim-autopairs',
-		config = function()
-            require("nvim-autopairs").setup{}
-        end
-	},
-
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require("indent_blankline").setup{
-                space_char_blankline = " ",
-                show_current_context = true,
-                show_current_context_start = true,
-        		use_treesitter = true,
-        		show_trailing_blankline_indent = false
-            }
-        end
+        "ms-jpq/coq_nvim",
+        branch = "coq"
     },
 
-    -- pydocstring
     {
-        "heavenshell/vim-pydocstring",
-        build = "make install",
-        config = function()
-            vim.g.pydocstring_formatter = "google"
-        end,
-        ft = "python"
+        "ms-jpq/coq.artifacts",
+        branch = "artifacts"
+    },
+
+    {
+        "ms-jpq/coq.thirdparty",
+        branch = "3p"
     },
 
 	-- nvim-treesitter
 	{
-		'nvim-treesitter/nvim-treesitter',
+        "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function()
-            require("nvim-treesitter.configs").setup{
-                highlight = {enable = true},
-                indent = {enable = true}
-            }
-        end
+        opts = {
+            configs = {
+                highlight = { enable = true },
+                indent = { enable = true },
+                incremental_selection = {
+                    enable = true,
+                    keymaps = {
+                        init_selection = "gnn",
+                        node_incremental = "grn",
+                        scope_incremental = "grc",
+                        node_decremental = "grm"
+                    },
+                },
+            },
+        },
 	},
 
-    "mfussenegger/nvim-dap",
-    "nvim-lua/plenary.nvim",
-    "jose-elias-alvarez/null-ls.nvim",
-
     {
-        "glepnir/lspsaga.nvim",
-        event = "LspAttach",
-        config = function()
-            require("lspsaga").setup{}
-        end,
-        dependencies = {
-            {"nvim-tree/nvim-web-devicons"},
-            {"nvim-treesitter/nvim-treesitter"}
-        }
-    },
-
-    -- tokyo night theme
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
+        "nvim-lualine/lualine.nvim",
+	    dependencies = {
+		    "nvim-tree/nvim-web-devicons"
+	    },
         opts = {}
     },
 
-    -- barbecue
     {
-	    "utilyre/barbecue.nvim",
-	    event = "VeryLazy",
-	    dependencies = {
-		    "neovim/nvim-lspconfig",
-		    "SmiteshP/nvim-navic",
-		    "nvim-tree/nvim-web-devicons",
-            "folke/tokyonight.nvim"
-	    },
-	    config = function()
-            require("barbecue").setup{
-                theme = "tokyonight"
-            }
-        end
-    },
-
-    -- lualine
-    {
-	    "nvim-lualine/lualine.nvim",
-	    event = "VeryLazy",
-	    requires = {
-		    "nvim-tree/nvim-web-devicons"
-	    },
-        config = function ()
-            require("lualine").setup{
-                options = {theme = "tokyonight"}
-            }
-            -- load theme
-            require("evil_lualine")
-        end
-    },
-
-    {
-        "glepnir/lspsaga.nvim",
-        event = "LspAttach",
-        config = function()
-            require("lspsaga").setup{}
-        end,
+        "nvimdev/lspsaga.nvim",
+        opts = {},
         dependencies = {
-            {"nvim-tree/nvim-web-devicons"},
-            {"nvim-treesitter/nvim-treesitter"}
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
+        event = "LspAttach",
+    },
+
+    {
+        "folke/neodev.nvim",
+        opts = {}
+    },
+
+    {
+        "junnplus/lsp-setup.nvim",
+        dependencies = {
+            "neovim/nvim-lspconfig"
+        }
+    },
+
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        opts = {
+            space_char_blankline = " ",
+            show_current_context = true,
+            show_current_context_start = true
         }
     },
 
     -- git signs
     {
         "lewis6991/gitsigns.nvim",
-        config = function()
-            require("gitsigns").setup{}
+        opts = {} 
+    },
+
+	{
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        opts = {}
+	},
+
+    { "LionC/nest.nvim" },
+
+    {
+	    "phaazon/hop.nvim",
+	    opts = {}
+    },
+
+    {
+        "sainnhe/edge",
+        init = function()
+            vim.g.edge_style = "aura"
+            vim.g.edge_better_performance = 1
+            vim.cmd.colorscheme("edge")
         end
+    },
+
+    {
+        "stevearc/oil.nvim",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons"
+        },
+        opts = {}
+    },
+
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "BurntSushi/ripgrep",
+            "nvim-tree/nvim-web-devicons",
+        },
+        tag = "0.1.2",
     }
-})
+ }
