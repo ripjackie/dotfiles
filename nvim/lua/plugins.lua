@@ -1,3 +1,4 @@
+
 require("lazy").setup {
     -- nvim-lsp
     { "neovim/nvim-lspconfig" },
@@ -18,8 +19,8 @@ require("lazy").setup {
         branch = "3p"
     },
 
-	-- nvim-treesitter
-	{
+    -- nvim-treesitter
+    {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         opts = {
@@ -37,13 +38,13 @@ require("lazy").setup {
                 },
             },
         },
-	},
+    },
 
     {
         "nvim-lualine/lualine.nvim",
-	    dependencies = {
-		    "nvim-tree/nvim-web-devicons"
-	    },
+        dependencies = {
+            "nvim-tree/nvim-web-devicons"
+        },
         opts = {}
     },
 
@@ -81,20 +82,20 @@ require("lazy").setup {
     -- git signs
     {
         "lewis6991/gitsigns.nvim",
-        opts = {} 
+        opts = {}
     },
 
-	{
+    {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         opts = {}
-	},
+    },
 
     { "LionC/nest.nvim" },
 
     {
-	    "phaazon/hop.nvim",
-	    opts = {}
+        "phaazon/hop.nvim",
+        opts = {}
     },
 
     {
@@ -107,14 +108,6 @@ require("lazy").setup {
     },
 
     {
-        "stevearc/oil.nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons"
-        },
-        opts = {}
-    },
-
-    {
         "nvim-telescope/telescope.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -123,4 +116,4 @@ require("lazy").setup {
         },
         tag = "0.1.2",
     }
- }
+}
