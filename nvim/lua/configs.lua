@@ -21,7 +21,6 @@ opt.cursorline = true -- highlight current cursorline
 opt.signcolumn = "yes" -- gutter always enabled
 opt.termguicolors = true
 opt.list = true
-opt.listchars:append "space:."
 opt.wrap = false -- disable linewrap
 
 opt.foldmethod = "expr"

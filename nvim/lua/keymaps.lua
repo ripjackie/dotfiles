@@ -14,7 +14,6 @@ require("nest").applyKeymaps {
             { "t", "<cmd>Lspsaga term_toggle<cr>" },
 	}},
         { "h", "<cmd>HopWord<cr>" },
-        { "c", require("ranger-nvim").open(true) },
         { "s", vim.diagnostic.open_float },
     }}
 }

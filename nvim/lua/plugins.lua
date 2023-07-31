@@ -1,4 +1,3 @@
-
 require("lazy").setup {
     -- nvim-lsp
     { "neovim/nvim-lspconfig" },
@@ -23,11 +22,11 @@ require("lazy").setup {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        opts = {
-            configs = {
+        config = function()
+            require("nvim-treesitter.configs").setup({
                 highlight = { enable = true },
                 indent = { enable = true },
-                incremental_selection = {
+                incremental_selection  = {
                     enable = true,
                     keymaps = {
                         init_selection = "gnn",
@@ -35,9 +34,9 @@ require("lazy").setup {
                         scope_incremental = "grc",
                         node_decremental = "grm"
                     },
-                },
-            },
-        },
+                }
+            })
+        end,
     },
 
     {
