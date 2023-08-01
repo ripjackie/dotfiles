@@ -22,6 +22,7 @@ opt.signcolumn = "yes" -- gutter always enabled
 opt.termguicolors = true
 opt.list = true
 opt.wrap = false -- disable linewrap
+opt.swapfile = false
 
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
