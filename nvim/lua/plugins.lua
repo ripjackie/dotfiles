@@ -57,7 +57,11 @@ require("lazy").setup {
         dependencies = {
             "nvim-tree/nvim-web-devicons"
         },
-        opts = {}
+        opts = {
+            options = {
+                theme = "onedark",
+            }
+        }
     },
 
     {
@@ -94,7 +98,9 @@ require("lazy").setup {
     -- git signs
     {
         "lewis6991/gitsigns.nvim",
-        opts = {}
+        opts = {
+            numhl = true
+        }
     },
 
     {
@@ -111,14 +117,18 @@ require("lazy").setup {
     },
 
     {
-        "sainnhe/edge",
+        "navarasu/onedark.nvim",
+        opts = {
+            style = "deep",
+            code_style = {
+                keywords = "italic,bold",
+                functions = "bold"
+            },
+        },
         init = function()
-            vim.g.edge_style = "aura"
-            vim.g.edge_better_performance = 1
-            vim.cmd.colorscheme("edge")
+            require("onedark").load()
         end
     },
-
     {
         "nvim-telescope/telescope.nvim",
         dependencies = {
