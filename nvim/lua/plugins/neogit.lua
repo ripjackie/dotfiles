@@ -1,5 +1,5 @@
 return {
-    "Neogit0rg/neogit",
+    "NeogitOrg/neogit",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope.nvim",
@@ -7,4 +7,3 @@ return {
     },
     opts = {}
 }
-
