@@ -1,0 +1,23 @@
+return {
+    "shellRaining/hlchunk.nvim",
+    opts = {
+        chunk = {
+            enable = true,
+            use_treesitter = false,
+        },
+        indent = {
+            enable = true,
+            use_treesitter = true,
+        },
+        line_num = {
+            enable = true,
+            use_treesitter = false,
+        },
+        blank = {
+            enable = false,
+        },
+        context = {
+            enable = false
+        }
+    }
+}

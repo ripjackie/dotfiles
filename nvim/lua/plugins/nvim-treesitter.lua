@@ -3,30 +3,24 @@ return {
     version = false,
     build = ":TSUpdate",
     main = "nvim-treesitter.configs",
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter-context",
+        "RRethy/nvim-treesitter-endwise",
+        "windwp/nvim-ts-autotag"
+    },
     opts = {
-        highlight = { enable = true },
-        indent = { enable = true },
-        incremental_selection = {
+        autotag = { enable = true },
+        endwise = { enable = true },
+        highlight = {
             enable = true,
-            keymaps = {
-                init_selection = "gnn",
-                node_incremental = "grn",
-                scope_incremental = "grc",
-                node_decremental = "grm"
-            }
+            additional_vim_regex_highlighting = true
         },
+        indent = { enable = true, disable = { "xml" }},
+        incremental_selection = { enable = true },
         ensure_installed = {
-            "c",
-            "lua",
-            "vim",
-            "vimdoc",
-            "query",
-            "http",
-            "json",
-            "xml",
-            "python",
-            "markdown",
-            "markdown_inline"
+            "vim", "vimdoc", "lua", "markdown", "markdown_inline",
+            "html", "xml", "json", "tsx",
+            "c", "query", "http", "python"
         }
     }
 }
