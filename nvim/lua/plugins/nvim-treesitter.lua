@@ -15,7 +15,10 @@ return {
             enable = true,
             additional_vim_regex_highlighting = true
         },
-        indent = { enable = true, disable = { "xml" }},
+        indent = {
+            enable = true,
+            disable = { "xml" }
+        },
         incremental_selection = { enable = true },
         ensure_installed = {
             "vim", "vimdoc", "lua", "markdown", "markdown_inline",
