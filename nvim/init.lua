@@ -10,7 +10,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("opts")
 require("lazy").setup("plugins")
-require("keymaps")
+require("caskey.wk").setup(require("mappings"))
+-- require("keymaps")
 require("lspconfigs")
 
 require('onedark').load()

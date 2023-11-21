@@ -1,3 +1,0 @@
-return {
-    "LionC/nest.nvim"
-}

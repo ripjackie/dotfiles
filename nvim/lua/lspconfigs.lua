@@ -1,5 +1,5 @@
-neodev = require("neodev")
-lsp_setup = require("lsp-setup")
+local neodev = require("neodev")
+local lsp_setup = require("lsp-setup")
 
 neodev.setup({})
 lsp_setup.setup({
@@ -18,7 +18,9 @@ lsp_setup.setup({
             settings = {
                 Lua = {
                     workspace = {
-                        checkThirdParty = false
+                        checkThirdParty = false,
+                        maxPreload = 10000,
+                        preloadFileSize = 1000
                     },
                     completion = {
                         callSnippet = "Replace"
