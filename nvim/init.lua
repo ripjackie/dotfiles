@@ -1,3 +1,4 @@
+local vim = vim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -13,5 +14,6 @@ require("lazy").setup("plugins")
 require("caskey.wk").setup(require("mappings"))
 -- require("keymaps")
 require("lspconfigs")
+require("linters")
 
 require('onedark').load()
