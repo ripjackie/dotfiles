@@ -17,15 +17,12 @@ return {
             h = { act = ck.cmd "Lspsaga hover_doc", desc = "Hover Doc" },
             o = { act = ck.cmd "Lspsaga outline", desc = "Outline" },
             c = { act = ck.cmd "Lspsaga code_action", desc = "Code Action" },
-            p = {
+            n = { act = ck.cmd "Lspsaga diagnostic_jump_next", desc = "Diagnostic Jump Next" },
+            p = { act = ck.cmd "Lspsaga diagnostic_jump_prev", desc = "Diagnostic Jump Prev" },
+            d = {
                 name = "Definitions",
                 d = { act = ck.cmd "Lspsaga peek_definition", desc = "Peek Definition" },
                 t = { act = ck.cmd "Lspsaga peek_type_definition", desc = "Peek Type Definition" }
-            },
-            d = {
-                name = "Diagnostics",
-                n = { act = ck.cmd "Lspsaga diagnostic_jump_next", desc = "Diagnostic Jump Next" },
-                p = { act = ck.cmd "Lspsaga diagnostic_jump_prev", desc = "Diagnostic Jump Prev" }
             }
         },
         g = function()
@@ -73,22 +70,14 @@ return {
                 h = { act = ts.help_tags, desc = "Telescope Help Tags" }
             }
         end,
-        b = {},
-        h = {},
-        x = {}
-
-    },
-    ["<leader>f"] = {
-    },
-
-    ["<leader>b"] = {
-        name = "Buffers",
-        n = { act = ck.cmd "bnext", desc = "Buffer Next" },
-        p = { act = ck.cmd "bprevious", desc = "Buffer Previous" },
-        e = { act = ck.cmd "enew", desc = "Buffer New" },
-        d = { act = ck.cmd "bdelete", desc = "Buffer Delete" }
-    },
-
-    ["<leader>h"] = { act = hop.hint_words, desc = "Hop Word" },
-    ["<leader>x"] = { act = ck.cmd "Explore", desc = "Open Explorer" },
+        v = { act = ck.cmd "Neotree toggle", desc = "Open Neo-Tree" },
+        b = {
+            name = "Buffers",
+            n = { act = ck.cmd "bnext", desc = "Buffer Next" },
+            p = { act = ck.cmd "bprevious", desc = "Buffer Previous" },
+            d = { act = ck.cmd "Bdelete", desc = "Buffer Delete" }
+        },
+        h = { act = hop.hint_words, desc = "Hop Word" },
+        x = { act = ck.cmd "Explore", desc = "Open Netrw Explorer" }
+    }
 }

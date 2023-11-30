@@ -14,6 +14,6 @@ require("lazy").setup("plugins")
 require("caskey.wk").setup(require("mappings"))
 -- require("keymaps")
 require("lspconfigs")
-require("linters")
+require("autocmds")
 
-require('onedark').load()
+vim.cmd.colorscheme("tokyonight")

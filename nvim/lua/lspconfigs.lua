@@ -19,8 +19,8 @@ lsp_setup.setup({
                 Lua = {
                     workspace = {
                         checkThirdParty = false,
-                        maxPreload = 10000,
-                        preloadFileSize = 1000
+                        maxPreload = 500,
+                        preloadFileSize = 500
                     },
                     completion = {
                         callSnippet = "Replace"
