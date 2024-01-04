@@ -28,10 +28,13 @@ opt.signcolumn    = "yes"
 opt.wrap          = false
 opt.swapfile      = false
 opt.background    = "dark"
+opt.cc            = "80"
 
 opt.termguicolors = true
 
 local lazy        = require("lazy")
 
 lazy.setup("plugins")
-require("configs.maps")
+require("keymaps")
+
+require("theme")

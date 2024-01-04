@@ -3,61 +3,48 @@ local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 
 local opts = {}
-local d = {}
 
 local has_words_before = function()
     unpack = unpack or table.unpack
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and
-        vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
-
 
 opts.snippet = {
     expand = function(args)
         luasnip.lsp_expand(args.body)
-    end
+    end,
 }
-
 
 opts.view = {
     docs = { auto_open = true },
-    entries = { name = "custom", selection_order = "near_cursor" }
+    entries = { name = "custom", selection_order = "near_cursor" },
 }
 
 opts.window = {
-    completion = {
-        -- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-        col_offset = 2,
-        side_padding = 0
-    }
     -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered()
+    -- documentation = cmp.config.window.bordered(),
 }
-
 
 opts.formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
         local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
-        kind.kind = " " .. (strings[1 or ""]) .. " "
+        kind.kind = " " .. strings[1 or ""] .. " "
         kind.menu = "    (" .. (strings[2] or "") .. ")"
         return kind
-    end
+    end,
 }
-
 
 opts.sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "nvim_lsp_signature_help" },
-    { name = "luasnip" }
+    { name = "luasnip" },
 }, {
     { name = "buffer" },
-    { name = "async_path" }
-
+    { name = "async_path" },
 })
-
 
 opts.mapping = cmp.mapping.preset.insert({
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -73,7 +60,7 @@ opts.mapping = cmp.mapping.preset.insert({
             end
         end,
         s = cmp.mapping.confirm({ select = true }),
-        c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+        c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
     }),
     ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
@@ -94,7 +81,7 @@ opts.mapping = cmp.mapping.preset.insert({
         else
             fallback()
         end
-    end, { "i", "s" })
+    end, { "i", "s" }),
 })
 
 return opts
