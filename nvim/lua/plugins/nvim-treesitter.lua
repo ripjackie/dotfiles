@@ -14,12 +14,8 @@ return {
         highlight = { enable = true, additional_vim_regex_highlighting = false },
         indent = { enable = true },
         ensure_installed = {
-            "vim",
-            "vimdoc",
-            "lua",
-            "python",
-            "markdown",
-            "markdown_inline",
+            "vim", "vimdoc", "markdown", "markdown_inline", "bash",
+            "lua", "python", "go"
         },
     },
 }

@@ -10,6 +10,25 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+-- Setups
+cmp.setup.cmdline({ "/", "?" }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = "buffer" }
+    }
+})
+
+cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = "cmdline" }
+    }, {
+        { name = "async_path" }
+    })
+})
+
+
+-- Opts
 opts.snippet = {
     expand = function(args)
         luasnip.lsp_expand(args.body)
@@ -39,7 +58,6 @@ opts.formatting = {
 
 opts.sources = cmp.config.sources({
     { name = "nvim_lsp" },
-    { name = "nvim_lsp_signature_help" },
     { name = "luasnip" },
 }, {
     { name = "buffer" },
@@ -51,7 +69,8 @@ opts.mapping = cmp.mapping.preset.insert({
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping({
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    --[[["<CR>"] = cmp.mapping({
         i = function(fallback)
             if cmp.visible() and cmp.get_active_entry() then
                 cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
@@ -61,7 +80,7 @@ opts.mapping = cmp.mapping.preset.insert({
         end,
         s = cmp.mapping.confirm({ select = true }),
         c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-    }),
+    }),]]
     ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
             cmp.select_next_item()

@@ -3,8 +3,10 @@ local opts = {
         enabled = true,
         types = true,
         runtime = true,
-        plugins = false
+        plugins = {
+            "nvim-dap-ui"
+        }
     }
 }
 
-require("neodev").setup(opts)
+return opts

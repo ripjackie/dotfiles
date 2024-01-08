@@ -1,15 +1,17 @@
 local themes = {}
 
-local make_output = function(inp)
+local dis_themes = {}
+
+local format_output = function(input)
 	local theme_list = {}
 	local output = {}
 
-	for i, _ in pairs(inp) do
+	for i, _ in pairs(input) do
 		table.insert(theme_list, i)
 	end
 	table.sort(theme_list)
 	for _, theme in pairs(theme_list) do
-		for _, colorscheme in pairs(inp[theme]) do
+		for _, colorscheme in pairs(input[theme]) do
 			table.insert(output, colorscheme)
 		end
 	end
@@ -184,7 +186,7 @@ themes.sonokai = {
 	},
 }
 
-themes.bamboo = {
+dis_themes.bamboo = {
 	{
 		name = "Bamboo Dark",
 		colorscheme = "bamboo",
@@ -201,4 +203,4 @@ themes.bamboo = {
 	},
 }
 
-return make_output(themes)
+return format_output(themes)

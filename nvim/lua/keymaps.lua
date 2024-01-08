@@ -11,6 +11,9 @@ wk.register({
         f = { cmd("Telescope find_files"), "Find Files" },
         g = { cmd("Telescope live_grep"), "Live Grep" }
     },
+    ["<leader>fm"] = { function()
+        vim.lsp.buf.format({ async = false })
+    end, "Format Buffer" },
     ["<leader>l"] = {
         name = "+Lspsaga",
         a = { cmd("Lspsaga code_action"), "Code Action" },
@@ -20,7 +23,10 @@ wk.register({
             p = { cmd("Lspsaga diagnostic_jump_prev"), "Jump Prev" },
         },
         r = { cmd("Lspsaga rename"), "Rename" },
+        f = { cmd("Lspsaga diagnostic_jump_next"), "LSP Diagnostic" },
     },
+    ["<leader>d"] = { require("dapui").toggle, "Open Debugger" },
+    ["<leader>u"] = { require("undotree").toggle, "Undotree" },
     ["<leader>q"] = { cmd("Neotree"), "Focus NeoTree" },
     ["<leader>x"] = { cmd("bdelete"), "Delete current buffer" },
     ["<leader>th"] = { cmd("Themery"), "Open Themery" },

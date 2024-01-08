@@ -9,6 +9,13 @@ opts.on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
         local fmtgrp = vim.api.nvim_create_augroup("LspFormat", { clear = true })
         vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = "*.go",
+            group = fmtgrp,
+            callback = function()
+                require("go.format").goimport()
+            end
+        })
+        vim.api.nvim_create_autocmd("BufWritePre", {
             group = fmtgrp,
             callback = function()
                 vim.lsp.buf.format({ async = false, bufnr = bufnr })
@@ -19,6 +26,7 @@ end
 
 opts.servers = {
     pyright = {},
+    gopls = {},
     lua_ls = {
         settings = {
             Lua = {
@@ -60,6 +68,4 @@ opts.servers = {
     },
 }
 
-require("plugins.neodev.configs")
-
-require("lsp-setup").setup(opts)
+return opts
