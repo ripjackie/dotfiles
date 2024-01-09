@@ -17,6 +17,6 @@ return {
         "rafamadriz/friendly-snippets"
     },
     opts = function()
-        require("configs.nvim-cmp")
+        return require("configs.nvim-cmp")
     end
 }
