@@ -1,11 +1,13 @@
 local vim = vim
 
 local plugins = {
-
   -- Overrides
 
   {
     "nvim-treesitter/nvim-treesitter",
+    init = function() end,
+    cmd = nil,
+    lazy = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter-context",
       "nvim-treesitter/nvim-treesitter-textobjects",
@@ -33,73 +35,12 @@ local plugins = {
     },
   },
 
-  -- Plugin Replacements
-  --
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {},
-    },
-    config = function(_, opts)
-      local registry = require("mason-registry")
-      dofile(vim.g.base46_cache .. "mason")
-      require("mason").setup(opts)
-
-      vim.api.nvim_create_autocmd("BufEnter", {
-        callback = function()
-          local installed = registry.get_installed_package_names()
-          local function hasValue(array, value)
-            for _, v in pairs(array) do
-              if v == value then
-                return true
-              end
-            end
-            return false
-          end
-
-          for _, value in pairs(opts.ensure_installed) do
-            if not hasValue(registry, value) then
-              local pkg = registry.get_package(value)
-              vim.notify("Automatically Installing " .. pkg.name)
-              pkg:install():once(
-                "closed",
-                vim.schedule_wrap(function()
-                  vim.notify(pkg.name .. " Installed Successfully")
-                end)
-              )
-            end
-          end
-          for _, value in pairs(installed) do
-            if not hasValue(opts.ensure_installed, value) then
-              -- uninstall
-            end
-          end
-        end,
-      })
-    end,
+    opts = require("custom.configs.mason").opts,
   },
 
-  {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    lazy = false,
-    opts = {
-      ensure_installed = {
-        -- lua
-        "lua-language-server",
-        "selene",
-        "stylua",
-        -- go
-        "gopls",
-        "gofumpt",
-        "goimports-reviser",
-        "golines",
-        -- python
-        "python-lsp-server",
-        "pyright",
-      },
-      auto_update = true,
-    },
-  },
+  -- Plugin Replacements
 
   {
     "altermo/ultimate-autopair.nvim",
@@ -134,6 +75,13 @@ local plugins = {
   },
 
   {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
+  },
+
+  {
     "nvimtools/none-ls.nvim",
     ft = { "go", "lua", "python" },
     opts = function()
@@ -147,17 +95,37 @@ local plugins = {
     event = "LspAttach",
     dependencies = {
       "SmiteshP/nvim-navic",
-      "Nvim-tree/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
     },
     opts = {},
   },
 
   {
-    "j-hui/fidget.nvim",
+    "folke/noice.nvim",
     lazy = true,
-    event = "LspAttach",
-    tag = "v1.1.0",
-    opts = {},
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    opts = {
+      lsp = {
+        hover = { enabled = false },
+        signature = { enabled = false },
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+        },
+      },
+      presets = {
+        bottom_search = false,
+        command_palette = true,
+        long_message_to_split = true,
+        inc_rename = false,
+        lsp_doc_border = true,
+      },
+    },
   },
 
   {
@@ -173,6 +141,16 @@ local plugins = {
     event = "InsertEnter",
     version = "*",
     opts = {},
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    version = "3.5.x",
+    init = function() end,
+    opts = {},
+    config = function(_, opts)
+      require("ibl").setup(opts)
+    end,
   },
 
   {
