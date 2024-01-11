@@ -1,12 +1,103 @@
 local vim = vim
 
 local plugins = {
-  -- Overrides
+
+  -- Plugin Replacements
 
   {
+    "altermo/ultimate-autopair.nvim",
+    lazy = true,
+    event = "InsertEnter",
+    dependencies = {
+      { "windwp/nvim-autopairs", enabled = false },
+    },
+    opts = {},
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    init = function() end,
+    config = function() end,
+  },
+
+  -- Custom Plugins
+
+  {
+    "mfussenegger/nvim-dap",
+  },
+
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
+  },
+
+  {
+    "nvimtools/none-ls.nvim",
+    opts = function()
+      -- return require("custom.configs.null-ls")
+    end,
+  },
+
+  {
+    "utilyre/barbecue.nvim",
+    lazy = true,
+    event = "LspAttach",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {},
+  },
+
+  {
+    "j-hui/fidget.nvim",
+    lazy = true,
+    event = "LspAttach",
+    opts = {}
+  },
+
+  {
+    "m-demare/hlargs.nvim",
+    lazy = true,
+    event = "LspAttach",
+    opts = {},
+  },
+
+  {
+    "kylechui/nvim-surround",
+    lazy = true,
+    event = "InsertEnter",
+    version = "*",
+    opts = {},
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    version = "3.5.x",
+    lazy = true,
+    event = "BufEnter",
+    init = function() end,
+    config = function(_, opts)
+      require("ibl").setup({})
+    end,
+  },
+
+  {
+    "folke/trouble.nvim",
+    lazy = true,
+    cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {},
+  },
+
+  -- Overrides
+  {
     "nvim-treesitter/nvim-treesitter",
-    init = nil,
-    cmd = nil,
+    init = function() end,
     lazy = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter-context",
@@ -29,138 +120,30 @@ local plugins = {
         "markdown_inline",
         "bash",
         "lua",
-        "go",
-        "python",
+        "go", "python",
       },
     },
   },
 
   {
     "williamboman/mason.nvim",
-    opts = require("custom.configs.mason").opts,
-  },
-
-  -- Plugin Replacements
-
-  {
-    "altermo/ultimate-autopair.nvim",
-    lazy = true,
-    event = "InsertEnter",
+    lazy = false,
     dependencies = {
-      { "windwp/nvim-autopairs", enabled = false },
+      "folke/neodev.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "jay-babu/mason-null-ls.nvim",
+      "jay-babu/mason-nvim-dap.nvim",
     },
-    opts = {},
-  },
 
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      {
-        "junnplus/lsp-setup.nvim",
-        dependencies = {
-          "folke/neodev.nvim",
-        },
-        config = function()
-          require("custom.configs.lsp-setup")
-        end,
-      },
-    },
-    config = nil,
-  },
+    opts = require("custom.configs.mason"),
 
-  -- Custom Plugins
-
-  {
-    "mfussenegger/nvim-dap",
-  },
-
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-    },
-  },
-
-  {
-    "nvimtools/none-ls.nvim",
-    ft = { "go", "lua", "python" },
-    opts = function()
-      return require("custom.configs.null-ls")
-    end,
-  },
-
-  {
-    "utilyre/barbecue.nvim",
-    lazy = true,
-    event = "LspAttach",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
-    },
-    opts = {},
-  },
-
-  {
-    "folke/noice.nvim",
-    lazy = true,
-    event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-    opts = {
-      lsp = {
-        hover = { enabled = false },
-        signature = { enabled = false },
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
-        },
-      },
-      presets = {
-        bottom_search = false,
-        command_palette = true,
-        long_message_to_split = true,
-        inc_rename = false,
-        lsp_doc_border = true,
-      },
-    },
-  },
-
-  {
-    "m-demare/hlargs.nvim",
-    lazy = true,
-    event = "LspAttach",
-    opts = {},
-  },
-
-  {
-    "kylechui/nvim-surround",
-    lazy = true,
-    event = "InsertEnter",
-    version = "*",
-    opts = {},
-  },
-
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    version = "3.5.x",
-    init = function() end,
-    opts = {},
     config = function(_, opts)
-      require("ibl").setup(opts)
+      require("mason").setup(opts.mason)
+      require("neodev").setup(opts.neodev)
+      require("mason-lspconfig").setup(opts.lspconfig)
+      require("mason-null-ls").setup(opts.null_ls)
+      require("mason-nvim-dap").setup(opts.dap)
     end,
-  },
-
-  {
-    "folke/trouble.nvim",
-    lazy = true,
-    cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    opts = {},
   },
 }
 
