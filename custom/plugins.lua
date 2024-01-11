@@ -5,7 +5,7 @@ local plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    init = function() end,
+    init = nil,
     cmd = nil,
     lazy = false,
     dependencies = {
@@ -65,7 +65,7 @@ local plugins = {
         end,
       },
     },
-    config = function() end,
+    config = nil,
   },
 
   -- Custom Plugins

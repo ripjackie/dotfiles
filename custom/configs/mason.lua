@@ -13,6 +13,7 @@ M.opts.ensure_installed = {
   "gofumpt",
   "goimports-reviser",
   "golines",
+  "delve",
   -- python
   "python-lsp-server",
   "pyright",
