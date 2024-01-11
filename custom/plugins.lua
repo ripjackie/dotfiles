@@ -1,16 +1,28 @@
+-- spec:
+-- [1]
+-- enabled
+-- {version, branch, tag}
+-- lazy
+-- {event, cmd, ft}
+-- dependencies
+-- init
+-- opts
+-- config
+
 local vim = vim
 
 local plugins = {
 
   -- Plugin Replacements
+  {
+    "windwp/nvim-autopairs",
+    enabled = false
+  },
 
   {
     "altermo/ultimate-autopair.nvim",
     lazy = true,
     event = "InsertEnter",
-    dependencies = {
-      { "windwp/nvim-autopairs", enabled = false },
-    },
     opts = {},
   },
 
@@ -18,6 +30,54 @@ local plugins = {
     "neovim/nvim-lspconfig",
     init = function() end,
     config = function() end,
+  },
+
+  {
+    "williamboman/mason.nvim",
+    lazy = false,
+    dependencies = {
+      "folke/neodev.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "jay-babu/mason-null-ls.nvim",
+      "jay-babu/mason-nvim-dap.nvim",
+      "nvimtools/none-ls.nvim",
+    },
+
+    opts = require("custom.configs.mason"),
+
+    config = function(_, opts)
+      require("neodev").setup(opts.neodev)
+      require("null-ls").setup()
+
+      require("mason").setup(opts.mason)
+      require("mason-lspconfig").setup(opts.lspconfig)
+      require("mason-null-ls").setup(opts.null_ls)
+      require("mason-nvim-dap").setup(opts.dap)
+    end,
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    enabled = false
+  },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    lazy = true,
+    cmd = { "Neotree" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim"
+    },
+    init = function ()
+      require("core.utils").load_mappings("neotree")
+    end,
+    opts = {
+      close_if_last_window = true,
+
+    }
   },
 
   -- Custom Plugins
@@ -34,13 +94,6 @@ local plugins = {
   },
 
   {
-    "nvimtools/none-ls.nvim",
-    opts = function()
-      -- return require("custom.configs.null-ls")
-    end,
-  },
-
-  {
     "utilyre/barbecue.nvim",
     lazy = true,
     event = "LspAttach",
@@ -50,14 +103,7 @@ local plugins = {
     },
     opts = {},
   },
-
-  {
-    "j-hui/fidget.nvim",
-    lazy = true,
-    event = "LspAttach",
-    opts = {}
-  },
-
+ 
   {
     "m-demare/hlargs.nvim",
     lazy = true,
@@ -67,9 +113,9 @@ local plugins = {
 
   {
     "kylechui/nvim-surround",
+    version = "2.1.x",
     lazy = true,
     event = "InsertEnter",
-    version = "*",
     opts = {},
   },
 
@@ -85,6 +131,34 @@ local plugins = {
   },
 
   {
+    "folke/noice.nvim",
+    lazy = true,
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify"
+    },
+    opts = {
+      cmdline = {
+        view = "cmdline"
+      },
+      popupmenu = {
+        backend = "cmp"
+      },
+      lsp = {
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true
+        }
+      },
+      presets = {
+        long_message_to_split = true
+      }
+    }
+  },
+
+  {
     "folke/trouble.nvim",
     lazy = true,
     cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
@@ -97,7 +171,6 @@ local plugins = {
   -- Overrides
   {
     "nvim-treesitter/nvim-treesitter",
-    init = function() end,
     lazy = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter-context",
@@ -105,6 +178,7 @@ local plugins = {
       "RRethy/nvim-treesitter-endwise",
       "windwp/nvim-ts-autotag",
     },
+    init = function() end,
     opts = {
       highlight = {
         enable = true,
@@ -125,26 +199,6 @@ local plugins = {
     },
   },
 
-  {
-    "williamboman/mason.nvim",
-    lazy = false,
-    dependencies = {
-      "folke/neodev.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      "jay-babu/mason-null-ls.nvim",
-      "jay-babu/mason-nvim-dap.nvim",
-    },
-
-    opts = require("custom.configs.mason"),
-
-    config = function(_, opts)
-      require("mason").setup(opts.mason)
-      require("neodev").setup(opts.neodev)
-      require("mason-lspconfig").setup(opts.lspconfig)
-      require("mason-null-ls").setup(opts.null_ls)
-      require("mason-nvim-dap").setup(opts.dap)
-    end,
-  },
 }
 
 return plugins
