@@ -1,40 +1,26 @@
-local vim = vim
-local opt = vim.opt
-
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+local function bootstrap_lazy()
+  local lazypath = string.format("%s/lazy/lazy.nvim", vim.fn.stdpath("data"))
+  if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
-        "git", "clone", "--filter=blob:none", "--branch=stable",
-        "https://github.com/folke/lazy.nvim.git",
-        lazypath
+      "git", "clone", "--filter=blob:none", "--branch=stable",
+      "https://github.com/folke/lazy.nvim.git",
+      lazypath
     })
+  end
+  vim.opt.rtp:prepend(lazypath)
 end
-opt.rtp:prepend(lazypath)
 
-vim.g.mapleader   = " "
+bootstrap_lazy()
 
-opt.tabstop       = 4
-opt.softtabstop   = 4
-opt.shiftwidth    = 4
-opt.expandtab     = true
+vim.opt.termguicolors = true
 
-opt.hlsearch      = false
-opt.incsearch     = true
+require("opts")
 
-opt.number        = true
-opt.cursorline    = true
-opt.signcolumn    = "yes"
+require("lazy").setup(
+  require("plugins"),
+  {
+    defaults = { lazy = true }
+  }
+)
 
-opt.wrap          = false
-opt.swapfile      = false
-opt.background    = "dark"
-opt.cc            = "80"
-
-opt.termguicolors = true
-
-local lazy        = require("lazy")
-
-lazy.setup("plugins")
-require("keymaps")
-
-require("theme")
+require("configs.themery.theme")
