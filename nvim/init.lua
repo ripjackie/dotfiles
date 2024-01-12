@@ -23,4 +23,4 @@ require("lazy").setup(
   }
 )
 
-require("configs.themery.theme")
+require("themery.theme")

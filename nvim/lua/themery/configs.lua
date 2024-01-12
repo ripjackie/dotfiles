@@ -1,4 +1,4 @@
-local themes = {
+local theme_configs = {
   {
     name = "Everforest Hard Dark",
     colorscheme = "everforest",
@@ -55,4 +55,4 @@ local themes = {
   },
 }
 
-return themes
+return theme_configs

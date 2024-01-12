@@ -10,12 +10,10 @@ local plugins = {
   {
     "zaldih/themery.nvim",
     cmd = "Themery",
-    dependencies = {
-      "sainnhe/everforest"
-    },
+    dependencies = require("themery.themes"),
     opts = {
-      themes = require("configs.themery.themes"),
-      themeConfigFile = "~/.config/nvim/lua/configs/themery/theme.lua",
+      themes = require("themery.configs"),
+      themeConfigFile = "~/.config/nvim/lua/themery/theme.lua",
       livePreview = true
     }
   },
