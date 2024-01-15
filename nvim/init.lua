@@ -13,6 +13,7 @@ end
 bootstrap_lazy()
 
 vim.opt.termguicolors = true
+vim.g.mapleader = " "
 
 require("opts")
 
@@ -23,4 +24,5 @@ require("lazy").setup(
   }
 )
 
-require("themery.theme")
+require("theme")
+require("mappings")
