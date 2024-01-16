@@ -19,9 +19,32 @@ require("paqa")({
   "junnplus/lsp-setup.nvim",
 
   "sainnhe/everforest",
-  "zaldih/themery.nvim",
+  {
+    "zaldih/themery.nvim",
+    config = function()
+      require("themery").setup({
+        themes = require("themes"),
+        themeConfigFile = vim.fn.stdpath("config") .. "/plugin/theme.lua",
+        livePreview = true
+      })
+    end
+  },
 
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = {
+          "vim", "vimdoc", "markdown", "markdown_inline",
+          "python", "lua"
+        },
+        highlight        = { enable = true },
+        indent           = { enable = true },
+        endwise          = { enable = true }
+      })
+    end
+  },
   "RRethy/nvim-treesitter-endwise",
 
   {
@@ -32,7 +55,12 @@ require("paqa")({
     end
   },
 
-  "j-hui/fidget.nvim",
+  {
+    "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup({})
+    end
+  },
 
   -- { "ms-jpq/coq_nvim",       branch = "coq" },
   -- { "ms-jpq/coq.artifacts",  branch = "artifacts" },
@@ -45,6 +73,12 @@ require("paqa")({
   "hrsh7th/nvim-cmp",
 
   "rafamadriz/friendly-snippets",
-  "L3MON4D3/LuaSnip",
+  {
+    "L3MON4D3/LuaSnip",
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip").filetype_extend("lua", { "luadoc" })
+    end
+  },
   "saadparwaiz1/cmp_luasnip"
 })
