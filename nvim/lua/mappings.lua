@@ -10,7 +10,7 @@ wk.register({
       h = { vim.cmd.Themery, "Open Themery" },
     },
     e = { vim.cmd.Neotree, "Open &| Focus Neotree" },
-    ra = { function() vim.opt.relativenumber = not vim.opt.relativenumber:get() end, "Toggle Relative Number" },
+    ra = { function() vim.cmd("set invrelativenumber") end, "Toggle Relative Number" }
   },
   ["<C-"] = {
     ["n>"] = { function() vim.cmd.Neotree("toggle") end, "Toggle Neotree" },
