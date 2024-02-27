@@ -2,10 +2,8 @@
 local M = {}
 
 M.ui = {
-  theme = "everforest",
-  statusline = {
-    seperator_style = "round",
-  },
+  theme = 'everforest',
+  extended_integrations = { "hop" }
 }
 M.plugins = "custom.plugins"
 M.mappings = require("custom.mappings")
