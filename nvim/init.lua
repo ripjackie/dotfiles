@@ -95,10 +95,13 @@ require("lazy").setup {
 			-- luasnip
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
+
+			"onsails/lspkind.nvim"
 		},
 		opts = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
+			local lspkind = require("lspkind")
 
 			local function has_words_before()
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -126,6 +129,14 @@ require("lazy").setup {
 					expand = function(args)
 						luasnip.lsp_expand(args.body)
 					end
+				},
+				formatting = {
+					format = lspkind.cmp_format({
+						mode = "text_symbol",
+						maxwidth = 50,
+						ellipsis_char = "...",
+
+					})
 				},
 				mapping = cmp.mapping.preset.insert({
 					['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -210,6 +221,10 @@ require("lazy").setup {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons"
 		},
+		opts = {}
+	},
+	{
+		"lewis6991/gitsigns.nvim",
 		opts = {}
 	}
 }
