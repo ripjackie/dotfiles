@@ -63,6 +63,7 @@ require("lazy").setup {
     "nvimtools/none-ls.nvim",
     dependencies = {
       "williamboman/mason.nvim",
+      "nvim-lua/plenary.nvim",
       {
         "jay-babu/mason-null-ls.nvim",
         opts = { automatic_installation = true }
@@ -71,7 +72,9 @@ require("lazy").setup {
     opts = function()
       local null_ls = require("null-ls")
       return {
-        null_ls.builtins.diagnostics.selene
+        sources = {
+          null_ls.builtins.diagnostics.selene
+        }
       }
     end
   },
@@ -171,7 +174,21 @@ require("lazy").setup {
         })
       }
     end
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim"
+    },
+    opts = {
+      close_if_last_window = true,
+    }
   }
 }
+
+vim.keymap.set('n', '<C-n>', "<cmd>Neotree toggle<cr>")
 
 vim.cmd.colorscheme("everforest")
