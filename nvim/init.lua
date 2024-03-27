@@ -13,11 +13,12 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup {
   {
     "sainnhe/everforest"
-  }, { "altermo/ultimate-autopair.nvim", lazy = true,
-  event = { "InsertEnter", "CmdlineEnter" },
-  version = "v0.6",
-  opts = {}
-},
+  },
+  {
+    "altermo/ultimate-autopair.nvim",
+    version = "v0.6",
+    opts = {}
+  },
   {
     "lukas-reineke/indent-blankline.nvim",
     version = "v3.x.x",
