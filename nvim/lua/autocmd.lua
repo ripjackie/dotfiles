@@ -1,8 +1,8 @@
 local vim = vim
 local opt = vim.opt
-local au = require("nx.au")
+local nx = { au = require("nx.au") }
 
-au({
+nx.au({
   {
     "InsertEnter",
     callback = function()

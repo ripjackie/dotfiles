@@ -1,6 +1,6 @@
 local vim = vim
-local hl = require("nx.hl")
+local nx = { hl = require("nx.hl") }
 
-hl({
+nx.hl({
   { "FloatBorder", bg = "none" }
 })

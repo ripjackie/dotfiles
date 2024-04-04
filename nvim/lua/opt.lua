@@ -1,11 +1,11 @@
 local vim = vim
-local set = require("nx.set")
+local nx = { set = require("nx.set") }
 
 if vim.fn.has("termguicolors") then
   vim.opt.termguicolors = true
 end
 
-set({
+nx.set({
   clipboard = "unnamedplus",
   tabstop = 4,
   softtabstop = 4,

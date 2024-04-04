@@ -1,12 +1,14 @@
 local vim = vim
 
+local uv = vim.uv or vim.loop
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.uv.fs_stat(lazypath) then
-    vim.fn.system({
-        "git", "clone", "--filter=blob:none", "--branch=stable",
-        "https://github.com/folke/lazy.nvim.git",
-        lazypath
-    })
+if not uv.fs_stat(lazypath) then
+  vim.system({
+    "git", "clone", "--filter=none", "--branch=stable",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath
+  }):wait()
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -19,16 +21,17 @@ vim.g.sonokai_diagnostic_virtual_text = "colored"
 
 
 require("lazy").setup({
-    { import = "plugins" },
-    { import = "plugins.themes" }
+  { import = "plugins" },
+  { import = "plugins.themes" }
 }, {
-    defaults = {
-        lazy = true
-    },
-    install = {
-        colorscheme = { "sonokai" }
-    }
+  defaults = {
+    lazy = true
+  },
+  install = {
+    colorscheme = { "sonokai" }
+  }
 })
+
 vim.cmd.colorscheme("sonokai")
 
 require("opt")
