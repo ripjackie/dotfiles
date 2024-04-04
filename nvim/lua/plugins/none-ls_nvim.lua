@@ -1,19 +1,12 @@
 return {
   "nvimtools/none-ls.nvim",
+  event = "LspAttach",
   dependencies = {
     "williamboman/mason.nvim",
     "nvim-lua/plenary.nvim",
-    {
-      "jay-babu/mason-null-ls.nvim",
-      opts = { automatic_installation = true }
-    }
+    "jay-babu/mason-null-ls.nvim"
   },
-  opts = function()
-    local null_ls = require("null-ls")
-    return {
-      sources = {
-        null_ls.builtins.diagnostics.selene
-      }
-    }
+  config = function()
+    require("config.null_ls")
   end
 }

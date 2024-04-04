@@ -12,7 +12,15 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 
-require("lazy").setup("plugins")
-
-require("keymaps")
-require("theme")
+require("opt")
+require("lazy").setup({
+  { import = "plugins" },
+  { import = "plugins.themes" }
+}, {
+  defaults = {
+    lazy = true
+  },
+  install = {
+    colorscheme = { "everforest" }
+  }
+})

@@ -1,0 +1,46 @@
+{
+    "neodev": {
+        "library": {
+            "enabled": true,
+            "plugins": [
+                "nvim-lspconfig",
+                "lsp"
+            ]
+        }
+    },
+    "neoconf": {
+        "plugins": {
+            "lua_ls": {
+                "enabled": true
+            },
+            "jsonls": {
+                "enabled": true
+            },
+            "lspconfig": {
+                "enabled": true
+            }
+        }
+    },
+    "lspconfig": {
+        "lua_ls": {
+            "Lua.runtime.version": "LuaJIT",
+            "Lua.completion.callSnippet": "Replace",
+            "Lua.hint": {
+                "enable": true,
+                "arrayIndex": "Auto",
+                "await": true,
+                "paramName": "All",
+                "paramType": true,
+                "semicolon": "SameLine",
+                "setType": false
+            }
+        },
+        "jsonls": {
+            "json.format.enable": true,
+            "json.validate.enable": true
+        },
+        "clangd": {
+            "clangd.enableCodeCompletion": true
+        }
+    }
+}
