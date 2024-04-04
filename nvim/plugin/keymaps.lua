@@ -1,11 +1,17 @@
 local vim = vim
 
-vim.keymap.set('n', "<leader>bd", vim.cmd.Bdelete)
-vim.keymap.set('n', "<leader>bn", vim.cmd.enew)
-vim.keymap.set('n', "<Tab>", vim.cmd.bnext)
-vim.keymap.set('n', "<S-Tab>", vim.cmd.bprev)
-vim.keymap.set('n', "<leader>c", function() vim.cmd.Neoconf({ "global" }) end)
-vim.keymap.set('n', "<C-n>", function() vim.cmd.Neotree({ "toggle", "right", "reveal" }) end)
+local map = vim.keymap.set
 
-vim.keymap.set('v', '>', "<gv")
-vim.keymap.set('v', '<', ">gv")
+map('n', "<leader>bd", vim.cmd.Bdelete)
+map('n', "<leader>bn", vim.cmd.enew)
+map('n', "<Tab>", vim.cmd.bnext)
+map('n', "<S-Tab>", vim.cmd.bprev)
+map('n', "<leader>c", function()
+  vim.cmd.Neoconf({ "global" })
+end)
+map('n', "<C-n>", function()
+  vim.cmd.Neotree({ "toggle", "right", "reveal", "reveal_force_cwd" })
+end)
+map('v', '>', ">gv")
+map('v', '<', "<gv")
+map('n', 'K', "<cmd>LspUI hover<cr>")
