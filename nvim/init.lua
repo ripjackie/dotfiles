@@ -12,7 +12,6 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 
-require("opt")
 require("lazy").setup({
   { import = "plugins" },
   { import = "plugins.themes" }
