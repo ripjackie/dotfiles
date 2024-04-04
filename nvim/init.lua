@@ -21,8 +21,11 @@ vim.g.sonokai_diagnostic_virtual_text = "colored"
 
 
 require("lazy").setup({
-  { import = "plugins" },
-  { import = "plugins.themes" }
+  -- { import = "plugins" },
+  { import = "plugins.lsp" },
+  { import = "plugins.visual" },
+  { import = "plugins.themes" },
+  { import = "plugins.qol" }
 }, {
   defaults = {
     lazy = true
