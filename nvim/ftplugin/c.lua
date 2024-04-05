@@ -1,6 +1,8 @@
 local vim = vim
-local opt = vim.opt
+local set = require("nx.set")
 
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
+set({
+    tabstop = 2,
+    softtabstop = 2,
+    shiftwidth = 2
+}, vim.opt)

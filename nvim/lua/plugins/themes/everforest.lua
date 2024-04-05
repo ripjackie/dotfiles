@@ -8,7 +8,4 @@ return {
     vim.g.everforest_better_performance = 1
     vim.g.everforest_background = "soft"
   end,
-  config = function()
-    vim.cmd.colorscheme("everforest")
-  end
 }

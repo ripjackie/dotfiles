@@ -1,6 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  cmd = "Neotree",
+  event = "VeryLazy",
   branch = "v3.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -15,6 +15,14 @@ return {
       },
       use_libuv_file_watcher = true,
       hijack_netrw_behavior = "open_current"
+    },
+    event_handlers = {
+      {
+        event = "file_opened",
+        handler = function()
+          require("neo-tree.command").execute({ action = "close" })
+        end
+      }
     }
   }
 }
