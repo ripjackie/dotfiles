@@ -20,11 +20,19 @@ nx.map { "<C-n>", function()
 end }
 
 -- LSP
-nx.map {
-  { "K",          function() return vim.cmd.LspUI "hover" end },
-  { "<leader>ca", function() return vim.cmd.LspUI "code_action" end },
-  { "<leader>rn", function() return vim.cmd.LspUI "rename" end }
-}
+if vim.fn.has("nvim-0.10") then
+  nx.map {
+    { "K",          function() return vim.cmd.LspUI "hover" end },
+    { "<leader>ca", function() return vim.cmd.LspUI "code_action" end },
+    { "<leader>rn", function() return vim.cmd.LspUI "rename" end }
+  }
+else
+  nx.map {
+    { "K",          function() return vim.lsp.buf.hover end },
+    { "<leader>ca", function() return vim.lsp.buf.code_action end },
+    { "<leader>rn", function() return vim.lsp.buf.rename end }
+  }
+end
 
 -- Hop
 nx.map { 'H', vim.cmd.HopChar2 }
