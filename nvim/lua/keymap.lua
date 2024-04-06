@@ -23,13 +23,21 @@ end }
 nx.map {
   { "K",          function() return vim.cmd.LspUI "hover" end },
   { "<leader>ca", function() return vim.cmd.LspUI "code_action" end },
+  { "<leader>rn", function() return vim.cmd.LspUI "rename" end }
 }
 
 -- Hop
 nx.map { 'H', vim.cmd.HopChar2 }
 
 -- DAP
-nx.map { "<leader>d", function() return require("dapui").toggle() end }
+nx.map {
+  { "<leader>dt", function() return require("dapui").toggle() end },
+  { "<leader>db", function() return require("dap").toggle_breakpoint() end },
+  { "<leader>dc", function() return require("dap").continue() end },
+  { "<leader>do", function() return require("dap").step_over() end },
+  { "<leader>di", function() return require("dap").step_into() end },
+  { "<leader>dr", function() return require("dap").repl.open() end }
+}
 
 -- Visual
 nx.map({
