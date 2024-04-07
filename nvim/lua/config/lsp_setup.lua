@@ -1,7 +1,5 @@
-local vim = vim
-require("neodev").setup({})
-require("neoconf").setup({})
 local lspconfig = require("lspconfig")
+
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local function on_attach(client)
   if client.supports_method("textDocument/formatting") then
@@ -12,22 +10,16 @@ local function on_attach(client)
     })
   end
 end
-lspconfig.lua_ls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities
-})
 
-lspconfig.clangd.setup({
-  on_attach = on_attach,
-  capabilities = capabilities
-})
-
-lspconfig.jsonls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities
-})
-
-lspconfig.ruff_lsp.setup({
-  on_attach = on_attach,
-  capabilities = capabilities
+require("neodev").setup({})
+require("neoconf").setup({})
+require("mason").setup({})
+require("lsp-setup").setup({
+  servers = {
+    lua_ls = {},
+    jsonls = {},
+    clangd = {},
+    ruff_lsp = {}
+  },
+  on_attach = on_attach
 })

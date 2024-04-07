@@ -12,7 +12,7 @@ if not uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
+vim.g.mobile = true
 vim.g.mapleader = " "
 vim.opt.background = "dark"
 vim.g.sonokai_style = 'maia'
@@ -41,4 +41,5 @@ require("opt")
 require("autocmd")
 require("keymap")
 require("highlight")
+require("config.lsp_setup")
 require("config.nvim-dap")
