@@ -22,7 +22,6 @@
   "indent-blankline.nvim": { "branch": "master", "commit": "3d08501caef2329aba5121b753e903904088f7e6" },
   "kanagawa.nvim": { "branch": "master", "commit": "bfa818c7bf6259152f1d89cf9fbfba3554c93695" },
   "lazy.nvim": { "branch": "main", "commit": "31ddbea7c10b6920c9077b66c97951ca8682d5c8" },
-  "leap.nvim": { "branch": "main", "commit": "7a9407d17fab3a1c3cfe201965d680a408776152" },
   "lsp-setup.nvim": { "branch": "main", "commit": "22ba14fb5c4208fd93f616d7b99bb47656e6e144" },
   "lspkind.nvim": { "branch": "master", "commit": "1735dd5a5054c1fb7feaf8e8658dbab925f4f0cf" },
   "lualine.nvim": { "branch": "master", "commit": "0a5a66803c7407767b799067986b4dc3036e1983" },
@@ -45,7 +44,10 @@
   "nvim-web-devicons": { "branch": "master", "commit": "3ee60deaa539360518eaab93a6c701fe9f4d82ef" },
   "nx.nvim": { "branch": "main", "commit": "3ef35bcd8923f91b97b06a4d122b27744522e0f7" },
   "plenary.nvim": { "branch": "master", "commit": "8aad4396840be7fc42896e3011751b7609ca4119" },
+  "ripgrep": { "branch": "master", "commit": "d922b7ac114c24d6800ae5f79d2967481f380c83" },
   "sonokai": { "branch": "master", "commit": "da162343354fbd9bf9cd49293a856f0e3761e8ac" },
+  "telescope-fzf-native.nvim": { "branch": "main", "commit": "9ef21b2e6bb6ebeaf349a0781745549bbb870d27" },
+  "telescope.nvim": { "branch": "master", "commit": "6312868392331c9c0f22725041f1ec2bef57c751" },
   "tokyonight.nvim": { "branch": "main", "commit": "9bf9ec53d5e87b025e2404069b71e7ebdc3a13e5" },
   "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "6ecf7461d44513af89f8257f057fcc99e9297612" }
 }
