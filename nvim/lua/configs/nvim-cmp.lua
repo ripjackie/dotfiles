@@ -3,6 +3,8 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 
+require("luasnip.loaders.from_vscode").lazy_load()
+
 local function words_before()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   if col ~= 0 then
@@ -12,9 +14,11 @@ end
 
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
-  sources = {
+  sources = cmp.config.sources({
+    { name = "nvim_lsp_document_symbol" }
+  }, {
     { name = "buffer" }
-  }
+  })
 })
 
 
@@ -37,10 +41,7 @@ cmp.setup {
 
   formatting = {
     format = lspkind.cmp_format({
-      mode = "text_symbol",
-      maxwidth = 50,
-      ellipsis_char = "...",
-
+      mode = "symbol_text"
     })
   },
 
@@ -89,7 +90,6 @@ cmp.setup {
 
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
-    { name = "nvim_lua" },
     { name = "luasnip" }
   }, {
     { name = "buffer" },

@@ -6,6 +6,6 @@ return {
   },
   build = ":TSUpdate",
   config = function()
-    require("config.treesitter")
+    require("configs.treesitter")
   end
 }

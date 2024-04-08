@@ -4,9 +4,8 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "nvim-lua/plenary.nvim",
-    "jay-babu/mason-null-ls.nvim"
   },
   config = function()
-    require("config.null_ls")
+    require("configs.null_ls")
   end
 }

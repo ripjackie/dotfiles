@@ -6,6 +6,7 @@ return {
 
     -- sources
     "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp-document-symbol",
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-cmdline",
@@ -14,11 +15,12 @@ return {
     -- luasnip
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets",
 
     -- icons
     "onsails/lspkind.nvim"
   },
   config = function()
-    require("config.nvim_cmp")
+    require("configs.nvim-cmp")
   end
 }

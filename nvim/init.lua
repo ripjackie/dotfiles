@@ -1,5 +1,3 @@
-local vim = vim
-
 local uv = vim.uv or vim.loop
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -14,32 +12,19 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mobile = false
 vim.g.mapleader = " "
-vim.opt.background = "dark"
 vim.g.sonokai_style = 'maia'
 vim.g.sonokai_better_performance = 1
 vim.g.sonokai_diagnostic_virtual_text = "colored"
 
-
 require("lazy").setup({
-  -- { import = "plugins" },
-  { import = "plugins.lsp" },
-  { import = "plugins.visual" },
-  { import = "plugins.themes" },
-  { import = "plugins.qol" }
+  { import = "plugins" },
 }, {
-  defaults = {
-    lazy = true
-  },
-  install = {
-    colorscheme = { "sonokai" }
-  }
+  defaults = { lazy = true },
+  install = { colorscheme = { "sonokai" } }
 })
 
-vim.cmd.colorscheme("sonokai")
+require("opts")
+require("autocmds")
+require("keymaps")
 
-require("opt")
-require("autocmd")
-require("keymap")
-require("highlight")
-require("config.lsp_setup")
-require("config.nvim-dap")
+vim.cmd.colorscheme("sonokai")

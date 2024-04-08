@@ -1,19 +1,15 @@
-local lspconfig = require("lspconfig")
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local function on_attach(client)
   if client.supports_method("textDocument/formatting") then
     vim.api.nvim_create_autocmd("BufWritePre", {
-      callback = function()
-        vim.lsp.buf.format({ async = false })
+      callback = function(ev)
+        vim.lsp.buf.format({ bufnr = ev.buf, async = false })
       end
     })
   end
 end
 
-require("neodev").setup({})
 require("neoconf").setup({})
-require("mason").setup({})
+require("neodev").setup({})
 require("lsp-setup").setup({
   servers = {
     lua_ls = {},
@@ -21,5 +17,6 @@ require("lsp-setup").setup({
     clangd = {},
     ruff_lsp = {}
   },
-  on_attach = on_attach
+  on_attach = on_attach,
+  default_mappings = false
 })
