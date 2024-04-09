@@ -10,7 +10,7 @@ if not uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.mobile = false
+vim.g.mobile = true
 vim.g.mapleader = " "
 vim.g.sonokai_style = 'maia'
 vim.g.sonokai_better_performance = 1
