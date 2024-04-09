@@ -20,7 +20,7 @@ map('n', "<Tab>", vim.cmd.bnext)
 map('n', "<S-Tab>", vim.cmd.bprev)
 
 map('n', "<leader>ng", function()
-  return vim.cmd.Neoconf("global")
+    return vim.cmd.Neoconf("global")
 end)
 
 map('n', "<leader>ff", ts.find_files)
@@ -34,4 +34,3 @@ map('n', "<leader>dc", dap.continue)
 map('n', "<leader>do", dap.step_over)
 map('n', "<leader>di", dap.step_into)
 map('n', "<leader>dr", dap.repl.open)
-
