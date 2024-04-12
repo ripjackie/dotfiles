@@ -21,6 +21,6 @@ return {
     "onsails/lspkind.nvim"
   },
   config = function()
-    require("configs.nvim-cmp")
+    require("plugins.configs.nvim-cmp")
   end
 }

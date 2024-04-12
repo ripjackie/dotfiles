@@ -14,17 +14,13 @@ map('n', 'K', vim.lsp.buf.hover)
 map('n', "<leader>ca", vim.lsp.buf.code_action)
 map('n', "<leader>rn", vim.lsp.buf.rename)
 
-map('n', "<leader>bd", vim.cmd.Bdelete)
+map('n', "<leader>bd", vim.cmd.bdelete)
 map('n', "<leader>bn", vim.cmd.enew)
 map('n', "<Tab>", vim.cmd.bnext)
 map('n', "<S-Tab>", vim.cmd.bprev)
 
 map('n', "<leader>c", function()
-  return vim.cmd.Neoconf("global")
-end)
-
-map('n', "<C-n>", function()
-  vim.cmd.Neotree({ "toggle", "float", "reveal", "reveal_force_cwd" })
+	return vim.cmd.Neoconf("global")
 end)
 
 map('n', "<leader>ff", ts.find_files)

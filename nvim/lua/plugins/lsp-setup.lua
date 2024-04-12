@@ -9,6 +9,6 @@ return {
     "folke/neoconf.nvim"
   },
   config = function()
-    require("configs.lspconfigs")
+    require("plugins.configs.lspconfigs")
   end
 }

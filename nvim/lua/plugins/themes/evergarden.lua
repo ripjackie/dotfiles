@@ -1,4 +1,0 @@
-return {
-  "comfysage/evergarden",
-  opts = {}
-}

@@ -6,7 +6,7 @@ return {
     "nvim-neotest/nvim-nio"
   },
   config = function()
-    require("configs.dapconfigs")
+    require("plugins.configs.dapconfigs")
     require("dapui").setup()
   end
 }

@@ -6,6 +6,6 @@ return {
     "nvim-lua/plenary.nvim",
   },
   config = function()
-    require("configs.null_ls")
+    require("plugins.configs.null_ls")
   end
 }

@@ -23,8 +23,6 @@ require("lazy").setup({
   install = { colorscheme = { "sonokai" } }
 })
 
-require("opts")
-require("autocmds")
-require("keymaps")
+require("core")
 
 vim.cmd.colorscheme("sonokai")
