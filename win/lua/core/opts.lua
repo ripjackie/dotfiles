@@ -1,8 +1,6 @@
 local opt = vim.opt
 
-if vim.fn.has("termguicolors") then
-  opt.termguicolors = true
-end
+opt.termguicolors = true
 
 opt.background = "dark"
 -- opt.clipboard:append("unnamedplus")

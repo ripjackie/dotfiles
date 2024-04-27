@@ -3,12 +3,12 @@ local M = {}
 
 M.depends = {
   "sainnhe/everforest",
-  "comfysave/evergarden",
+  "comfysage/evergarden",
 }
 
 M.configs = {
   "everforest",
-  "evergarden"
+  "evergarden",
 }
 
 return M

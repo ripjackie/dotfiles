@@ -38,6 +38,7 @@ local plugins = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "lukas-reineke/cmp-under-comparator",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip"
     },
@@ -61,8 +62,75 @@ local plugins = {
     },
     version = "*",
     opts = {}
-  }
+  },
 
+  {
+    "christoomey/vim-tmux-navigator"
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    version = "v3.x.x",
+		main = "ibl",
+    opts = {}
+  },
+
+  {
+    "folke/twilight.nvim",
+    opts = {}
+  },
+
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {}
+  },
+
+	{
+		"ggandor/leap.nvim",
+	},
+
+  {
+    "kylechui/nvim-surround",
+    opts = {}
+  },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim"
+    },
+    opts = {}
+  },
+
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+			"jay-babu/mason-null-ls.nvim",
+    },
+    config = function ()
+      local ls = require("null-ls")
+      local diag = ls.builtins.diagnostics
+      local fmt = ls.builtins.formatting
+      ls.setup({
+        sources = {
+          -- lua
+          diag.selene,
+
+          -- python
+          fmt.isort,
+          fmt.black,
+        }
+      })
+    end
+  },
+
+  {
+    "j-hui/fidget.nvim",
+    opts = {}
+  }
 }
 
 return plugins

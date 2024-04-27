@@ -27,7 +27,7 @@ cmp.setup({
       end
     end, { "i", "s" }),
     ["<CR>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
+      if cmp.visible() and cmp.get_active_entry() then
         if luasnip.expandable() then
           luasnip.expand()
         else
@@ -45,7 +45,19 @@ cmp.setup({
   }, {
     { name = "buffer" },
     { name = "path" }
-  })
+  }),
+	sorting = {
+		comparators = {
+			cmp.config.compare.offset,
+			cmp.config.compare.exact,
+			cmp.config.compare.score,
+			require("cmp-under-comparator").under,
+			cmp.config.compare.kind,
+			cmp.config.compare.sort_text,
+			cmp.config.compare.length,
+			cmp.config.compare.order
+		}
+	}
 })
 
 cmp.setup.cmdline({ "/", "?" }, {
