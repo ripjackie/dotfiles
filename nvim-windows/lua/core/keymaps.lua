@@ -13,3 +13,7 @@ map("n", "<S-Tab>", "<cmd>bprev<cr>")
 map("n", "-", "<cmd>Explore<cr>")
 
 map("n", "<leader>th", "<cmd>Themery<cr>")
+map('n', 's', "<Plug>(leap-forward)")
+map('n', 'S', "<Plug>(leap-backward)")
+map('n', 'gs', "<Plug>(leap-from-window)")
+
