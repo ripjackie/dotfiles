@@ -1,3 +1,7 @@
 return {
-  "ggandor/leap.nvim"
+  "ggandor/leap.nvim",
+  keys = {
+    { 's', "<Plug>(leap-forward)" },
+    { 'S', "<Plug>(leap-backward)" }
+  }
 }

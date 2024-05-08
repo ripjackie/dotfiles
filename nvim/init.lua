@@ -11,7 +11,7 @@ require("lazy").setup({
 }, {
   install = {
     colorscheme = { "habamax" }
-  }
+  },
 })
 
-require("core.theme")
+vim.cmd.colorscheme("forestbones")
