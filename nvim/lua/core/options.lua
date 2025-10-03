@@ -12,9 +12,11 @@ opt.smarttab = true
 opt.autoindent = true -- false so treesitter works
 opt.smartindent = false
 
+opt.clipboard = "unnamedplus"
+
 opt.splitbelow = true
 opt.splitright = true
-opt.autochdir = true
+opt.autochdir = false
 
 opt.showmode = false
 opt.wrap = false
@@ -37,3 +39,4 @@ opt.swapfile = false
 
 opt.scrolloff = 12
 opt.sidescrolloff = 16
+opt.cursorline = true
