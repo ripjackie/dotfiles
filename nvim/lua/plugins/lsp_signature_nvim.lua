@@ -1,5 +1,5 @@
 return {
-  "Dan7h3x/signup.nvim",
+  "ray-x/lsp_signature.nvim",
   event = "InsertEnter",
   opts = {}
 }

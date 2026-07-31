@@ -1,13 +1,20 @@
+local configs = {
+  tabline = {},
+  statusline = {},
+  comment = {},
+  bufremove = {
+    silent = true
+  },
+  move = {},
+  pairs = {},
+  cursorword = {}
+}
+
 return {
-  "echasnovski/mini.nvim",
+  "nvim-mini/mini.nvim",
   config = function()
-    -- require("mini.tabline").setup()
-    -- require("mini.statusline").setup()
-    -- require("mini.completion").setup()
-    require("mini.comment").setup()
-    require("mini.pick").setup()
-    require("mini.bufremove").setup({
-      silent = true
-    })
+    for name, config in pairs(configs) do
+      require("mini." .. name).setup(config)
+    end
   end
 }

@@ -1,5 +1,5 @@
 return {
-  "Fildo7525/pretty_hover",
+  "Wansmer/symbol-usage.nvim",
   event = "LspAttach",
   opts = {}
 }

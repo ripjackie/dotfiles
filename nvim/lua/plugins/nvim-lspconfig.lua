@@ -5,7 +5,7 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "saghen/blink.cmp",
-      "artemave/workspace-diagnostics.nvim"
+      -- "artemave/workspace-diagnostics.nvim"
     },
     opts = {
       servers = {
@@ -24,6 +24,8 @@ return {
           }
         },
         -- csharp_ls = {},
+        rust_analyzer = {
+        },
         ruff = {
           init_options = {
             configuration = {
@@ -38,6 +40,7 @@ return {
             }
           }
         },
+        ts_ls = {},
         clangd = {},
         cmake = {},
         gopls = {},
@@ -53,7 +56,7 @@ return {
           if client.name == "ruff" then
             client.server_capabilities.hoverProvider = false
           end
-          require("workspace-diagnostics").populate_workspace_diagnostics(client, args.buf)
+          -- require("workspace-diagnostics").populate_workspace_diagnostics(client, args.buf)
           if client:supports_method("textDocument/formatting") then
             vim.api.nvim_create_autocmd("BufWritePre", {
               buffer = args.buf,
@@ -68,8 +71,7 @@ return {
           end
         end
       })
-      -- local lspconfig = require("lspconfig")
-      -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
       for server, config in pairs(opts.servers) do
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
         -- lspconfig[server].setup(config)
