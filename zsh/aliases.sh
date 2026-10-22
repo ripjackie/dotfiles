@@ -1,5 +1,0 @@
-alias vim="nvim"
-alias cat="bat"
-alias cp="xcp"
-alias ls="exa --git --icons --classify"
-alias tree="ls -T"
