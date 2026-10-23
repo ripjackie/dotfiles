@@ -41,6 +41,11 @@ map('t', "<Esc>", "<C-\\><C-n>")
 
 map('n', '-', "<CMD>Oil<CR>")
 
+map({ 'n', 'x', 'o' }, 's', "<Plug>(leap)")
+map('n', 'S', "<Plug>(leap-from-window)")
+
+
+
 -- local builtin = require("telescope.builtin")
 -- map("n", "<leader>ff", builtin.find_files)
 -- map("n", "<leader>fg", builtin.live_grep)

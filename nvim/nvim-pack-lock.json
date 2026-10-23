@@ -34,9 +34,17 @@
       "rev": "fd780920613e541cbdfac41bf711583ed49f9249",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "hlchunk.nvim": {
+      "rev": "4ddc056e4ca45f1c7dc6aa21935df710b263b1aa",
+      "src": "gh:shellRaining/hlchunk.nvim"
+    },
     "indent-blankline.nvim": {
       "rev": "f1e186e44d3b7f9ae918008e2c28ce37c6023d2d",
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
+    },
+    "leap.nvim": {
+      "rev": "277e04fad21e3af05a55cc414757b09a704f2a92",
+      "src": "cb:andyg/leap.nvim"
     },
     "lsp-progress.nvim": {
       "rev": "f6d5af10563b895ff846346f57cbd4451439f4c1",
@@ -67,9 +75,17 @@
       "rev": "d3733d933833a0e59b813ecec99341527adf0c28",
       "src": "https://github.com/stevearc/oil.nvim"
     },
+    "rainbow-delimiters.nvim": {
+      "rev": "b55decda611755171bc5bf8f4c99603a75de4b41",
+      "src": "gh:HiPhish/rainbow-delimiters.nvim"
+    },
     "referencer.nvim": {
       "rev": "7e9420ee16e3b3eecc9b3fc53ff75448435e94bd",
       "src": "https://github.com/romus204/referencer.nvim"
+    },
+    "smart-backspace.nvim": {
+      "rev": "06121e57027ae4a6a444817d005ce1b475004ccd",
+      "src": "gh:qwavies/smart-backspace.nvim"
     },
     "symbol-usage.nvim": {
       "rev": "6a449e6b37be61a110606e9a67a7a308774f120f",
@@ -78,6 +94,10 @@
     "tiny-glimmer.nvim": {
       "rev": "b35d4f7b0eaedb75ff99fa694f4d1ea2ce8ce6c8",
       "src": "https://github.com/rachartier/tiny-glimmer.nvim"
+    },
+    "tree-sitter-manager.nvim": {
+      "rev": "06c90a3af8eb471f4a4ff979d681312284a8583a",
+      "src": "gh:romus204/tree-sitter-manager.nvim"
     },
     "trouble.nvim": {
       "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
