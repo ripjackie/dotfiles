@@ -8,7 +8,7 @@ vim.pack.add({
   -- Functionality
   "gh:stevearc/oil.nvim",
   "cb:andyg/leap.nvim",
-  "gh:qwavies/smart-backspace.nvim",
+  -- "gh:qwavies/smart-backspace.nvim",
   -- Completion
   { src = "gh:L3MON4D3/LuaSnip", version = vim.version.range("v2.*") },
   "gh:rafamadriz/friendly-snippets",
@@ -52,7 +52,7 @@ local plugin_configs = {
     },
     auto_install = true
   },
-  ["smart-backspace"] = {}
+  -- ["smart-backspace"] = {}
 }
 
 for plug, conf in pairs(plugin_configs) do
