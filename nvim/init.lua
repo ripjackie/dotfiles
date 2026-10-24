@@ -40,6 +40,9 @@ local plugin_configs = {
     },
     chunk = {
       enable = true
+    },
+    indent = {
+      enable = true
     }
   },
   gitsigns = {},
