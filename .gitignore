@@ -1,2 +1,4 @@
 nvchad/
 nvim/lazy-lock.json
+tmux/plugins/
+!tmux/plugins/tpm
