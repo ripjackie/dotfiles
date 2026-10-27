@@ -1,13 +1,35 @@
 vim.g.mapleader = " "
 
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(ev)
+
+    ---@type vim.event.packchanged.data
+    local data = ev.data
+    local name, kind = data.spec.name, data.kind
+    if name == "telescope-fzf-native.nvim" and (kind == "install" or kind == "update") then
+      vim.print(string.format("Building '%s', running '%s'...", name, "make"))
+      vim.system({ "make" }, { cwd = data.path }, function(result)
+        if result.code == 0 then
+          vim.print(string.format("Building '%s' succeeded.", name))
+        else
+          vim.print(string.format("Building '%s' failed, output: %s", name, result.stderr))
+        end
+      end)
+    end
+  end
+})
+
 vim.pack.add({
   -- Colorschemes
   { src = "gh:catppuccin/nvim", name = "catppuccin" },
   -- Basic Dependencies
   "gh:nvim-tree/nvim-web-devicons",
+  "gh:nvim-lua/plenary.nvim",
   -- Functionality
   "gh:stevearc/oil.nvim",
   "cb:andyg/leap.nvim",
+  "gh:nvim-telescope/telescope-fzf-native.nvim",
+  { src = "gh:nvim-telescope/telescope.nvim", version = vim.version.range("*") },
   -- "gh:qwavies/smart-backspace.nvim",
   -- Completion
   { src = "gh:L3MON4D3/LuaSnip", version = vim.version.range("v2.*") },
@@ -29,6 +51,7 @@ vim.pack.add({
   -- DAP
   "gh:mfussenegger/nvim-dap",
   { src = "gh:igorlfs/nvim-dap-view", version = vim.version.range("1.*") },
+
 })
 
 local plugin_configs = {
@@ -55,6 +78,7 @@ local plugin_configs = {
     },
     auto_install = true
   },
+  telescope = {}
   -- ["smart-backspace"] = {}
 }
 
@@ -78,5 +102,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     require("trouble").setup()
   end
 })
+
 
 vim.cmd.colorscheme("catppuccin-mocha")
