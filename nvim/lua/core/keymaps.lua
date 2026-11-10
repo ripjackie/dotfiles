@@ -21,6 +21,12 @@ map("n", "<leader>gD", vim.lsp.buf.definition)
 map("n", "<leader>gt", vim.lsp.buf.type_definition)
 
 map('n', "<leader>d", "<CMD>DapViewToggle<CR>")
+map('n', "<F5>", function() require('dap').continue() end)
+map('n', "<F10>", function() require('dap').step_over() end)
+map('n', "<F11>", function() require('dap').step_into() end)
+map('n', "<F12>", function() require('dap').step_out() end)
+map('n', "<leader>b", function() require('dap').toggle_breakpoint() end)
+
 
 map("n", "<leader>e", vim.diagnostic.open_float)
 map('n', "<leader>ca", vim.lsp.buf.code_action)
